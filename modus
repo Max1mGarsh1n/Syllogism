@@ -1,0 +1,41 @@
+s=[[0], [1], [2], [3], [4], [5], [0, 1], [1,2,3,4,5]]
+m=[6,7,8,9]
+p=[0,1,2,3,7,4,8,5,9]
+a=[2,3]
+    
+def gen(k):
+    s=[]
+    for i in range(k):
+        for j in range(k-i):
+            s.append(list(range(j,i+j+1)))
+    return s
+
+def count(x,y):
+    c=0
+    for i in x:
+        for j in y:
+            if i==j:
+                c+=1
+    return c
+
+#А (обще-утвердительные суждения)
+#Е (обще-отрицательные суждения)
+#I (частно-утвердительные суждения)
+#О (частно-отрицательные суждения)
+
+def A(x,y):
+    return (count(x,y)==len(x))
+
+def E(x,y):
+    return (not(A))
+
+def I(x,y):
+    return (count(x,y)>0)
+
+def O(x,y):
+    return (not(I))
+
+def superfunction(fun,arg1,arg2):
+    return fun(arg1,arg2)
+
+
